@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolls-Royce Phantom Overview</title>
+    <link rel="stylesheet" href="Rolls-royce.css"> <!-- Linking the external CSS file -->
+</head>
+<body>
+       <!-- Header Section -->
+       <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="/ecom-website/images/Vision-logo.png" alt="Motor Vision Logo">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides">
+                <img src="/ecom-website/images/rolls-royce.jpg" class="slide active" alt="Rolls-Royce Phantom 1">
+                <img src="/ecom-website/images/r-2.jfif" class="slide" alt="Rolls-Royce Phantom 2">
+                <img src="/ecom-website/images/r-3.jpg" class="slide" alt="Rolls-Royce  Phantom 3">
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- Car Overview Section -->
+        <div class="car-overview">
+            <h2>Car Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-item"><strong>Brand:</strong> Rolls-Royce</div>
+                <div class="overview-item"><strong>Model:</strong> Phantom</div>
+                <div class="overview-item"><strong>Type:</strong> Luxury Coupe</div>
+                <div class="overview-item"><strong>Engine:</strong> 6.6L V12 Twin-Turbo</div>
+                <div class="overview-item"><strong>Horsepower:</strong> 624 HP</div>
+                <div class="overview-item"><strong>Torque:</strong> 800 Nm</div>
+                <div class="overview-item"><strong>0-100 km/h:</strong> 4.5 seconds</div>
+                <div class="overview-item"><strong>Top Speed:</strong> 250 km/h</div>
+                <div class="overview-item"><strong>Transmission:</strong> 8-Speed Automatic</div>
+                <div class="overview-item"><strong>Special Features:</strong> Starlight Headliner, Bespoke Interior, Advanced Suspension System</div>
+            </div>
+
+              <!-- Buttons -->
+              <div class="button-container">
+                <a href="#" class="btn buy-now" 
+                onclick="addToCart('Rolls-Royce Phantom', '₹ 12.5 crores', '/ecom-website/images/rolls-royce.jpg')">
+                Buy Now
+             </a>
+                <a href="contact.html" class="btn get-in-touch">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="Roll-royce.js"></script> <!-- Linking the JavaScript file -->
+</body>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="language">
+            <span>Language: </span>
+            <a href="#">English</a> | <a href="#">हिंदी</a>
+        </div>
+        <nav class="footer-nav">
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Advertise</a>
+        </nav>
+    </div>
+    
+    <div class="footer-middle">
+        <div class="social-media">
+            <span>CONNECT WITH US</span>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        
+      <!-- <div class="mobile-app">
+            <span>DOWNLOAD MOBILE APP</span>
+            <a href="#"><img src="app-store.png" alt="App Store"></a>
+            <a href="#"><img src="google-play.png" alt="Google Play"></a>
+        </div>--> 
+    </div>
+</footer>
+</html>
