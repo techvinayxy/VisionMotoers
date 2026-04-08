@@ -1,16 +1,27 @@
 // Image Slider Functionality
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
-const slidesContainer = document.querySelector('.slides');
 const totalSlides = slides.length;
 
-// Initialize slider
-if (slides.length > 0) {
-    showSlide(currentSlide);
+// Initialize slider only if slides exist
+if (totalSlides > 0) {
+    // Show first slide initially
+    slides[0].classList.add('active');
     createDots();
 }
 
 function showSlide(index) {
+    // Remove active class from all slides
+    slides.forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    // Remove active class from all dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
     // Handle wrapping
     if (index >= totalSlides) {
         currentSlide = 0;
@@ -20,16 +31,13 @@ function showSlide(index) {
         currentSlide = index;
     }
     
-    // Update slides
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === currentSlide) {
-            slide.classList.add('active');
-        }
-    });
+    // Add active class to current slide
+    slides[currentSlide].classList.add('active');
     
-    // Update dots
-    updateDots();
+    // Add active class to current dot
+    if (dots[currentSlide]) {
+        dots[currentSlide].classList.add('active');
+    }
 }
 
 function prevSlide() {
@@ -56,22 +64,7 @@ function createDots() {
     slider.appendChild(dotsContainer);
 }
 
-function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        dot.classList.remove('active');
-        if (index === currentSlide) {
-            dot.classList.add('active');
-        }
-    });
-}
-
-// Auto slide (optional - uncomment to enable)
-// setInterval(() => {
-//     nextSlide();
-// }, 5000);
-
-// Add touch support for slider
+// Touch support for slider (swipe gestures)
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -79,24 +72,25 @@ const sliderElement = document.querySelector('.slider');
 if (sliderElement) {
     sliderElement.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+    }, { passive: true });
 
     sliderElement.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    });
+    }, { passive: true });
 }
 
 function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
         nextSlide();
     }
-    if (touchEndX > touchStartX + 50) {
+    if (touchEndX > touchStartX + swipeThreshold) {
         prevSlide();
     }
 }
 
-// Add keyboard navigation
+// Keyboard navigation
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') {
         prevSlide();
@@ -106,7 +100,12 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// Scroll to top button functionality
+// Auto-slide (optional - uncomment to enable auto-play)
+// setInterval(() => {
+//     nextSlide();
+// }, 5000);
+
+// Scroll to top button
 const scrollTopBtn = document.createElement('button');
 scrollTopBtn.className = 'scroll-top';
 scrollTopBtn.innerHTML = '↑';
@@ -129,10 +128,8 @@ scrollTopBtn.addEventListener('click', () => {
 
 // Add to cart functionality
 function addToCart(carName, price, image) {
-    // Get existing cart or create new one
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Add item to cart
     cart.push({
         name: carName,
         price: price,
@@ -140,13 +137,10 @@ function addToCart(carName, price, image) {
         addedAt: new Date().toISOString()
     });
     
-    // Save to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
     
-    // Show confirmation
     alert(carName + ' has been added to your cart!\nPrice: ' + price);
     
-    // Update cart counter (if you have one)
     updateCartCounter();
 }
 
@@ -159,11 +153,7 @@ function updateCartCounter() {
     }
 }
 
-// Page load animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
+// Click outside to close any modals (if you add them later)
+document.addEventListener('click', e => {
+    // Add modal close logic here if needed
 });
