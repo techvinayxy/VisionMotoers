@@ -1,0 +1,39 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "brand": "Rolls-Royce",
+      "model": "Phantom",
+      "fullName": "Rolls-Royce Phantom",
+      "type": "Luxury Coupe",
+      "price": "₹ 12.5 crores",
+      "priceNumeric": 125000000,
+      "images": [
+        "/images/rolls-royce.jpg",
+        "/images/r-3.jpg",
+        "/images/r-2.jfif"
+      ],
+      "mainImage": "/images/rolls-royce.jpg",
+      "specifications": {
+        "engine": "6.6L V12 Twin-Turbo",
+        "horsepower": "624 HP",
+        "torque": "800 Nm",
+        "acceleration": "4.5 seconds",
+        "topSpeed": "250 km/h",
+        "transmission": "8-Speed Automatic"
+      },
+      "features": [
+        "Starlight Headliner",
+        "Bespoke Interior",
+        "Advanced Suspension System"
+      ],
+      "category": "Luxury",
+      "year": 2024,
+      "availability": "In Stock"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "totalCars": 1
+  }
+}
